@@ -20,15 +20,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         showTimePickerDialog()
         }
-    }
 
     private fun showTimePickerDialog() {
         val timePickerDialog = TimePickerDialog(
                 this,
                 TimePickerDialog.OnTimeSetListener { view, hour, minute ->
-                    Log.d("UI_PARTS", "$hour:$minute")
+                    if(hour<2){
+                        textView.text = "こんばんは"
+                    }else if(hour>=2&&hour<10){
+                        textView.text = "おはよう"
+                    }else if (hour>=10&&hour<18){
+                        textView.text = "こんにちは"
+                    }else if (hour>=18){
+                        textView.text = "こんばんは"
+                    }
                 },
                 13, 0, true)
         timePickerDialog.show()
+
     }
+
+
 }
